@@ -57,10 +57,9 @@ def totMarks(name, marks):
     if len(marks)==0:
         return 0
     return marks[0]+totMarks(marks[1:])        
-for i in range(3):
-    name=input("enter student name: ")
-    mathsMarks,sciMarks,engMarks=int(input("enter maths marks: ")),int(input("enter sci marks: ")),int(input("enter eng marks: "))
-    marks=[mathsMarks,sciMarks,engMarks]
+name=input("enter student name: ")
+mathsMarks,sciMarks,engMarks=int(input("enter maths marks: ")),int(input("enter sci marks: ")),int(input("enter eng marks: "))
+marks=[mathsMarks,sciMarks,engMarks]
 subject=('maths','sci','eng')
 print("Total Marks: ",totMarks(name,marks))
 print("Average Marks: ",addStudent(name,marks))
