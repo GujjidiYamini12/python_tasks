@@ -69,7 +69,6 @@ def addToCart(): #cart contains items,quantity
             raise NameError
         quantity=int(input("enter quantity: "))
         cart.append((productName,quantity))
-        print(cart)
         print("Item added to cart successfully.")
     except NameError:
         print("Product not found in store.") 
@@ -77,42 +76,38 @@ def addToCart(): #cart contains items,quantity
         print("Invalid quantity! Please enter a number.") 
     except TypeError:
         print("Cart data type error.")   
-def tot_price(list_cart,index):
-    if index==len(list_cart):
-        return 0
-    product_name,quantity=list_cart[index]
-    return dic[product_name]*quantity+tot_price(list_cart,index+1)
+def tot_price(list_cart,index=0):
+    try:
+        if index==len(list_cart):
+            return 0
+        product_name,quantity=list_cart[index]
+        return dic[product_name]*quantity+tot_price(list_cart,index+1)
+    except ValueError:
+        print("Invalid quantity! Please enter a number.") 
 def view_tot_bill():
     try:
+        total=0
         print("Items in Cart")
         for product_name,quantity in cart:
             print(f"{product_name} x {quantity}")
-        total=tot_price(cart,0)
-        #avg=total/len(cart)
-        print(len(cart))
-        #print("Total Bill: ",total)
+            total=tot_price(cart)
+        total=total/1
+        print("Total Bill: ",total)
     except ZeroDivisionError:
         print("Calculation error: division by zero")
 '''displayProducts()
 addToCart()'''
-view_tot_bill()
-"""while True:
+#view_tot_bill()'''
+while True:
+    print("1. Display Products\n2. Add Item to Cart\n3. View Total Bill\n4. Exit\n")
     x=int(input("Enter choice: "))
     if x==1:
-        print("1. Display Products\n2. Add Item to Cart\n3. View Total Bill\n4. Exit\n")
         displayProducts()
-        break
     elif x==2:
-        print("1. Display Products\n2. Add Item to Cart\n3. View Total Bill\n4. Exit\n")
         addToCart()
-        break
     elif x==3:
-        print("1. Display Products\n2. Add Item to Cart\n3. View Total Bill\n4. Exit\n")
         view_tot_bill()
-        break
     elif x==4:
-        print("1. Display Products\n2. Add Item to Cart\n3. View Total Bill\n4. Exit\n")
         break
     else:
         print("Invalid choice")
-        break"""

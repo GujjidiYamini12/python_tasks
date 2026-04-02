@@ -47,19 +47,54 @@ ZeroDivisionError
 Cannot divide by zero.
 TypeError
 Marks data type errors"""
-dit=[]
-def addStudent(name,marks):
-    dit={name:marks}
-    print(dit) #displaying student
-    avgMarks=sum(marks)/3
-    return avgMarks
-def totMarks(name, marks):
-    if len(marks)==0:
+subject=('maths','sci','soc')
+student=set()
+dic={}
+def addStudent():
+    try:
+        name=input("enter student name: ")
+        subject=(int(input("enter maths marks: ")),
+        int(input("enter sci marks: ")),
+        int(input("enter soc marks: ")))
+        dic[name]=list(subject)
+    except ValueError:
+        print("Invalid input! Please enter numeric marks.")
+    except TypeError:
+        print("Marks data type error.")
+    
+
+def displayStudent():
+    print(dic)
+
+def totMarks(list,index=0):
+    if len(list)<=index:
         return 0
-    return marks[0]+totMarks(marks[1:])        
-name=input("enter student name: ")
-mathsMarks,sciMarks,engMarks=int(input("enter maths marks: ")),int(input("enter sci marks: ")),int(input("enter eng marks: "))
-marks=[mathsMarks,sciMarks,engMarks]
-subject=('maths','sci','eng')
-print("Total Marks: ",totMarks(name,marks))
-print("Average Marks: ",addStudent(name,marks))
+    return list[index]+totMarks(list,index+1)
+def calAvg():
+    try:
+        name=input("enter student name to calculate average: ")
+        if name in dic.keys():
+            tot=totMarks(dic[name])
+            avgMarks=tot/len(subject)
+            print("Total Marks: ",tot)
+            print("Average Marks: ",avgMarks)
+        else:
+            raise NameError
+    except NameError:
+        print("Student name not found.")
+    except ZeroDivisionError:
+        print("Cannot divide by zero.")
+
+while True:
+    print("1. Add Student\n2. Display Students\n3. Calculate Average\n4. Exit")
+    num=int(input("Enter choice: "))
+    if num==1:
+        addStudent()
+    elif num==2:
+        displayStudent()
+    elif num==3:
+        calAvg()
+    elif num==4:
+        break
+    else:
+        print("Invalid choice")
