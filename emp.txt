@@ -1,0 +1,3 @@
+Yamini : 20000
+Naveen : 25000
+Laxmi : 30000

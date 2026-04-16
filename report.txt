@@ -1,0 +1,6 @@
+Name,Marks,Grade
+Yamini,40,E
+Ravi,55,E
+Subbu,19,E
+Navvi,14,E
+Ram,26,E
