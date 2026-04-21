@@ -1,4 +1,6 @@
-"""�� Scenario 1: Basic Data Loading & Cleaning
+"""==========================================================================================
+�� Scenario 1: Basic Data Loading & Cleaning
+=============================================================================================
 You are given a CSV file containing railway gauge data.
 �� Tasks:
 1. Load the dataset into a Pandas DataFrame.
@@ -18,7 +20,9 @@ for i in df.columns:
     if i!="Year":
         df[i]=pd.to_numeric(df[i],errors="coerce")
 print(df.dtypes)
-"""�� Scenario 2: Simple Visualization
+"""===========================================================================================
+�� Scenario 2: Simple Visualization
+=============================================================================================
 You want a quick understanding of total railway track growth.
 �� Tasks:
 1. Extract Year and Total columns.
@@ -36,7 +40,9 @@ plt.title("Total tracks over years")
 plt.tight_layout()
 plt.show()
 print("Trend is increasing year by year but with some dips in later years")
-"""�� Scenario 3: Filtering + Bar Chart
+"""==========================================================================================
+�� Scenario 3: Filtering + Bar Chart
+=============================================================================================
 You are asked to analyze modern railway expansion.
 �� Tasks:
 1. Filter the dataset for years after 2000.
@@ -63,7 +69,10 @@ plt.xticks(x,fil_df["Year_in_int"])
 plt.legend()
 plt.show()
 print("Broad gauge dominented since 2000")
-"""�� Scenario 4: Feature Engineering + Pie Chart
+"""
+==========================================================================================
+�� Scenario 4: Feature Engineering + Pie Chart
+==========================================================================================
 You want to analyze the contribution of each gauge type.
 �� Tasks:
 1. Calculate total sum of each gauge across all years.
@@ -81,7 +90,9 @@ plt.pie(s_total,labels=["Broad Gauge","Metre Gauge","Narrow Gauge"],
 plt.title("percentage contribution")
 plt.show()
 print("Broad Gauge contributes the most to the total railway network among all gauge types.")
-"""�� Scenario 5: Advanced Analysis + Multiple Graphs
+"""==========================================================================================
+�� Scenario 5: Advanced Analysis + Multiple Graphs
+=============================================================================================
 You are asked to perform a complete analysis of railway trends.
 �� Tasks:
 1. Create new columns:
