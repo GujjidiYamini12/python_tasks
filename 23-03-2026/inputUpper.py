@@ -3,7 +3,6 @@ sentence=input()
 #print(sentence.upper())
 new_sen=""
 for i in sentence:
-
     if ord(i)>=97:
         i=chr(ord(i)-32)
     else:
