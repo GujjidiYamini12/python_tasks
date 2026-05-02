@@ -203,8 +203,101 @@ y_pred = classifier.predict(X_test)
 print('\n'+'-'*20+'Accuracy Score on the Test set'+'-'*20)
 print("{:.0%}".format(accuracy_score(y_test, y_pred)))
 
+# ============================================================
+# 8. Gradient Boosting Regressor
+# ============================================================
+# Gradient Boosting builds models sequentially to correct previous errors.
+# It predicts continuous values and improves accuracy using multiple weak learners.
 
+from sklearn.ensemble import GradientBoostingRegressor
+regressor = GradientBoostingRegressor()
+print(regressor)
 
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
 
+# Evaluate using R2 Score
+from sklearn.metrics import r2_score
+print('\n'+'-'*20+'R2 Score on the Test set'+'-'*20)
+print("{:.2f}".format(r2_score(y_test, y_pred)))
 
+# ============================================================
+# 9. Linear Regression
+# ============================================================
+# Linear Regression models a linear relationship between features and target.
+# It predicts continuous values like house prices.
 
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+print(regressor)
+
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
+
+from sklearn.metrics import r2_score
+print('\n'+'-'*20+'R2 Score on the Test set'+'-'*20)
+print("{:.2f}".format(r2_score(y_test, y_pred)))
+
+# ============================================================
+# 10. Ridge Regression
+# ============================================================
+# Ridge Regression reduces overfitting using regularization.
+# It works well when features are highly correlated.
+
+from sklearn.linear_model import Ridge
+regressor = Ridge()
+print(regressor)
+
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
+
+print('\n'+'-'*20+'R2 Score on the Test set'+'-'*20)
+print("{:.2f}".format(r2_score(y_test, y_pred)))
+
+# ============================================================
+# 11. Decision Tree Regressor
+# ============================================================
+# Decision Tree splits data into rules to predict values.
+# It handles non-linear relationships in housing data.
+
+from sklearn.tree import DecisionTreeRegressor
+regressor = DecisionTreeRegressor()
+print(regressor)
+
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
+
+print('\n'+'-'*20+'R2 Score on the Test set'+'-'*20)
+print("{:.2f}".format(r2_score(y_test, y_pred)))
+
+# ============================================================
+# 12. Random Forest Regressor
+# ============================================================
+# Random Forest combines multiple trees for better accuracy.
+# It reduces overfitting and improves prediction stability.
+
+from sklearn.ensemble import RandomForestRegressor
+regressor = RandomForestRegressor()
+print(regressor)
+
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
+
+print('\n'+'-'*20+'R2 Score on the Test set'+'-'*20)
+print("{:.2f}".format(r2_score(y_test, y_pred)))
+
+# ============================================================
+# 13. Support Vector Regressor (SVR)
+# ============================================================
+# SVR predicts continuous values using margin-based learning.
+# It works well for complex relationships in small datasets.
+
+from sklearn.svm import SVR
+regressor = SVR()
+print(regressor)
+
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
+
+print('\n'+'-'*20+'R2 Score on the Test set'+'-'*20)
+print("{:.2f}".format(r2_score(y_test, y_pred)))
