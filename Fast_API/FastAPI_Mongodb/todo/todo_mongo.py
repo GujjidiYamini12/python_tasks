@@ -15,7 +15,7 @@ app = FastAPI()
 # ------------------------------------------------------------
 # 🌐 MongoDB Atlas Connection
 # ------------------------------------------------------------
-MONGO_URL = "mongodb+srv://yaminigujjidi_db_user:.5w_8ZbPY58kW9j@cluster0.5dfjgav.mongodb.net/todo_db?appName=Cluster0&retryWrites=true&w=majority"
+MONGO_URL = "mongodb+srv://yaminigujjidi_db_user:.5w_8ZbPY58kW9j@cluster0.5dfjgav.mongodb.net/student_db?appName=Cluster0&retryWrites=true&w=majority"
 '''
 mongodb+srv://username:password@clustername.xxxxx.mongodb.net/todo_db?retryWrites=true&w=majority
 │              │        │        │                              │
