@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Todo</title>
+            <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+        </head>
+        <body>
+            <h1>May I know what is your Todo list?</h1>
+            <form>
+                <input type="text" name="task" placeholder="enter task here">
+                <button type="submit">Add</button>
+            </form>
+            <ul>
+                <li>Painting</li>
+                <li>Cooking</li>
+                <li>Playing</li>
+            </ul>
+            <a href="/">
+                <button>Back</button>
+            </a>
+        </body>
+    </html>
