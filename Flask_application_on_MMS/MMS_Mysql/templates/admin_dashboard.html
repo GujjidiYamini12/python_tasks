@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-actions">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="javascript:history.back()">Back</a>
+</div>
+
+<h2>Admin Dashboard</h2>
+<p><a href="{{ url_for('admin_reports') }}">Open Reports</a></p>
+
+<div class="split">
+    <div class="form-card">
+        <h3>Add Theater</h3>
+        <form method="POST" action="{{ url_for('add_theater') }}">
+            <label>Theater Name</label>
+            <input type="text" name="name" required />
+            <label>City</label>
+            <input type="text" name="city" required />
+            <button type="submit">Add Theater</button>
+        </form>
+    </div>
+
+    <div class="form-card">
+        <h3>Add Movie</h3>
+        <form method="POST" action="{{ url_for('add_movie') }}">
+            <label>Title</label>
+            <input type="text" name="title" required />
+            <label>Genre</label>
+            <input type="text" name="genre" required />
+            <label>Duration (mins)</label>
+            <input type="number" name="duration_mins" min="30" required />
+            <label>Language</label>
+            <input type="text" name="language" required />
+            <label>Actors (comma separated)</label>
+            <input type="text" name="actors" required />
+            <label>Poster URL</label>
+            <input type="url" name="poster_url" />
+            <label>Rating (0 - 5)</label>
+            <input type="number" name="rating" min="0" max="5" step="0.1" value="4.0" />
+            <button type="submit">Add Movie</button>
+        </form>
+    </div>
+
+    <div class="form-card">
+        <h3>Add Show</h3>
+        <form method="POST" action="{{ url_for('add_show') }}">
+            <label>Movie</label>
+            <select name="movie_id" required>
+                {% for movie in movies %}
+                    <option value="{{ movie.id }}">{{ movie.title }}</option>
+                {% endfor %}
+            </select>
+            <label>Theater</label>
+            <select name="theater_id" required>
+                {% for theater in theaters %}
+                    <option value="{{ theater.id }}">{{ theater.name }} ({{ theater.city }})</option>
+                {% endfor %}
+            </select>
+            <label>Screen</label>
+            <select name="screen_no" required>
+                <option value="1">Screen 1</option>
+                <option value="2">Screen 2</option>
+            </select>
+            <label>Show Category</label>
+            <select name="show_slot" required>
+                <option value="Morning">Morning</option>
+                <option value="Matinee">Matinee</option>
+                <option value="Night">Night</option>
+                <option value="Midnight">Midnight</option>
+            </select>
+            <label>AC Type</label>
+            <select name="is_ac" required>
+                <option value="yes">AC</option>
+                <option value="no">Non-AC</option>
+            </select>
+            <label>Show Date</label>
+            <input type="date" name="show_date" required />
+            <label>Fixed Timing</label>
+            <select name="show_time_value" required>
+                {% for value, label in fixed_time_options %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+            <label>Ticket Price</label>
+            <input type="number" step="0.01" name="price" required />
+            <label>Total Seats</label>
+            <input type="number" name="total_seats" min="1" required />
+            <button type="submit">Add Show</button>
+        </form>
+    </div>
+</div>
+
+<h3>Current Shows</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Theater</th>
+            <th>Screen</th>
+            <th>Type</th>
+            <th>AC</th>
+            <th>Show Time</th>
+            <th>Price</th>
+            <th>Available / Total Seats</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for show in shows %}
+            <tr>
+                <td>{{ show.movie.title }}</td>
+                <td>{{ show.theater.name }} ({{ show.theater.city }})</td>
+                <td>Screen {{ show.screen_no }}</td>
+                <td>{{ show.show_slot }}</td>
+                <td>{{ "AC" if show.is_ac else "Non-AC" }}</td>
+                <td>{{ show.show_time.strftime("%d %b %Y, %I:%M %p") }}</td>
+                <td>INR {{ "%.2f"|format(show.price) }}</td>
+                <td>{{ show.available_seats }} / {{ show.total_seats }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('update_show', show_id=show.id) }}">
+                        <select name="theater_id" required>
+                            {% for theater in theaters %}
+                                <option value="{{ theater.id }}" {% if theater.id == show.theater_id %}selected{% endif %}>
+                                    {{ theater.name }} ({{ theater.city }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <select name="screen_no" required>
+                            <option value="1" {% if show.screen_no == 1 %}selected{% endif %}>Screen 1</option>
+                            <option value="2" {% if show.screen_no == 2 %}selected{% endif %}>Screen 2</option>
+                        </select>
+                        <select name="show_slot" required>
+                            <option value="Morning" {% if show.show_slot == "Morning" %}selected{% endif %}>Morning</option>
+                            <option value="Matinee" {% if show.show_slot == "Matinee" %}selected{% endif %}>Matinee</option>
+                            <option value="Night" {% if show.show_slot == "Night" %}selected{% endif %}>Night</option>
+                            <option value="Midnight" {% if show.show_slot == "Midnight" %}selected{% endif %}>Midnight</option>
+                        </select>
+                        <select name="is_ac" required>
+                            <option value="yes" {% if show.is_ac %}selected{% endif %}>AC</option>
+                            <option value="no" {% if not show.is_ac %}selected{% endif %}>Non-AC</option>
+                        </select>
+                        <input type="date" name="show_date" value="{{ show.show_time.strftime('%Y-%m-%d') }}" required />
+                        <select name="show_time_value" required>
+                            {% for value, label in fixed_time_options %}
+                                <option value="{{ value }}" {% if value == show.show_time.strftime('%H:%M') %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="number" name="price" step="0.01" value="{{ show.price }}" required />
+                        <button type="submit">Update</button>
+                    </form>
+                    <form method="POST" action="{{ url_for('delete_show', show_id=show.id) }}" onsubmit="return confirm('Delete this show?')">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr><td colspan="9">No shows added yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

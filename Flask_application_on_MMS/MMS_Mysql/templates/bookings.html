@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Bookings</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/bookings.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎬 MMS</h2>
+
+        <a href="/">Dashboard</a>
+        <a href="/movies">Movies</a>
+        <a href="/users">Users</a>
+        <a href="/theaters">Theaters</a>
+        <a href="/shows">Shows</a>
+        <a href="/screens">Screens</a>
+        <a href="/seats">Seats</a>
+        <a href="/bookings">Bookings</a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>🎟 Bookings</h1>
+
+            <button
+                class="add-btn"
+                onclick="
+                window.location.href=
+                '/add_booking'
+                "
+            >
+                + Add Booking
+            </button>
+
+        </div>
+
+        <table class="booking-table">
+
+            <tr>
+
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Show ID</th>
+                <th>Seat ID</th>
+                <th>Actions</th>
+
+            </tr>
+
+            {% for booking in bookings %}
+
+            <tr>
+
+                <td>{{ booking[0] }}</td>
+
+                <td>{{ booking[1] }}</td>
+
+                <td>{{ booking[2] }}</td>
+
+                <td>{{ booking[3] }}</td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+                        href="/edit_booking/{{ booking[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+                        href="/delete_booking/{{ booking[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

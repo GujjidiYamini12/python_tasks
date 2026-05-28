@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Edit Movie</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/edit_movie.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>🎬 Edit Movie</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>Movie Name</label>
+
+                <input
+                    type="text"
+                    name="movie_name"
+                    value="{{ movie[1] }}"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Genre</label>
+
+                <input
+                    type="text"
+                    name="genre"
+                    value="{{ movie[2] }}"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Rating</label>
+
+                <input
+                    type="text"
+                    name="rating"
+                    value="{{ movie[3] }}"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Duration</label>
+
+                <input
+                    type="text"
+                    name="duration"
+                    value="{{ movie[4] }}"
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+                type="submit"
+            >
+                Update Movie
+            </button>
+
+            <button
+                class="back-btn"
+                type="button"
+                onclick="window.location.href='/movies'"
+            >
+                Back
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

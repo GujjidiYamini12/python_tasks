@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-actions">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="javascript:history.back()">Back</a>
+</div>
+
+<h2>{{ theater.name }} - Running Movies</h2>
+<p class="muted">{{ theater.city }}</p>
+
+<div class="card-grid">
+    {% for show in shows %}
+        <article class="card movie-card">
+            <img
+                class="poster"
+                src="{{ show.movie.poster_url or 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800' }}"
+                alt="{{ show.movie.title }} poster"
+            />
+            <h3>{{ show.movie.title }}</h3>
+            <p class="stars">
+                {% for i in range(1, 6) %}
+                    {% if i <= (show.movie.rating|round(0, 'floor')) %}★{% else %}☆{% endif %}
+                {% endfor %}
+                <span>{{ "%.1f"|format(show.movie.rating) }}/5</span>
+            </p>
+            <p><strong>Actors:</strong> {{ show.movie.actors }}</p>
+            <p><strong>Duration:</strong> {{ show.movie.duration_mins|duration_hm }}</p>
+            <p><strong>Screen:</strong> Screen {{ show.screen_no }} | {{ show.show_slot }} | {{ "AC" if show.is_ac else "Non-AC" }}</p>
+            <p><strong>Date:</strong> {{ show.show_time.strftime("%d %b %Y") }}</p>
+            <p><strong>Time:</strong> {{ show.show_time.strftime("%I:%M %p") }}</p>
+            <p><strong>Price:</strong> INR {{ "%.2f"|format(show.price) }}</p>
+            <p><strong>Seats Left:</strong> {{ effective_availability[show.id] }}</p>
+            {% if logged_user %}
+                <a href="{{ url_for('select_seats', show_id=show.id) }}">
+                    <button {% if effective_availability[show.id] == 0 %}disabled{% endif %}>
+                        Book {{ show.show_time.strftime("%I:%M %p") }}
+                    </button>
+                </a>
+            {% else %}
+                <p class="muted">Login to book this show.</p>
+            {% endif %}
+        </article>
+    {% else %}
+        <p>No shows available in this theater yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

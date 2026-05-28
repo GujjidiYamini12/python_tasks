@@ -1,0 +1,243 @@
+:root {
+    --bg: #090b16;
+    --card: #13182a;
+    --border: #2b3354;
+    --text: #f8f9ff;
+    --muted: #aab2d8;
+    --primary: #6c7cff;
+    --accent: #00d4ff;
+    --danger: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1f3a 0%, var(--bg) 55%);
+    color: var(--text);
+}
+
+.navbar {
+    background: rgba(9, 11, 22, 0.82);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.brand {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 28px;
+    height: 28px;
+}
+
+.nav-links a,
+.nav-links span {
+    color: #fff;
+    margin-left: 12px;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 28px auto;
+    padding: 0 18px 40px;
+}
+
+.hero {
+    background: linear-gradient(120deg, rgba(108, 124, 255, 0.25), rgba(0, 212, 255, 0.18));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    margin: 0 0 8px;
+}
+
+.hero p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.page-actions {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.page-actions a {
+    color: #b9c6ff;
+    text-decoration: none;
+    border: 1px solid #33406b;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 18px;
+}
+
+.card,
+.form-card {
+    background: linear-gradient(180deg, #171d33, #111629);
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+}
+
+.movie-card .poster {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #364064;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: #ffd166;
+    margin: 0 0 8px;
+}
+
+.stars span {
+    color: var(--muted);
+    margin-left: 6px;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 6px 0 10px;
+    border-radius: 8px;
+    border: 1px solid #3a4262;
+    background: #0f1426;
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+button {
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:disabled {
+    background: #67718f;
+    cursor: not-allowed;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111629;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #2b3354;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    color: #dce2ff;
+    background: #181f38;
+}
+
+form {
+    margin: 0;
+}
+
+td form + form {
+    margin-top: 8px;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+.alert-success { background: #bbf7d0; }
+.alert-danger { background: #fecaca; }
+.alert-warning { background: #fde68a; }
+
+.split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.seat-label {
+    display: inline-block;
+}
+
+.seat-label input {
+    display: none;
+}
+
+.seat-label span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #3a4262;
+    background: #121a33;
+    cursor: pointer;
+}
+
+.seat-label input:checked + span {
+    background: #22c55e;
+    color: #fff;
+    border-color: #22c55e;
+}
+
+a {
+    color: #8aa2ff;
+}

@@ -1,0 +1,67 @@
+<h2>Edit Show</h2>
+
+<form method="POST">
+
+Movie ID:
+
+<input
+type="number"
+
+name="movie_id"
+
+value="{{show[1]}}">
+
+Screen ID:
+
+<input
+type="number"
+
+name="screen_id"
+
+value="{{show[2]}}">
+
+Show Time:
+
+<input
+type="text"
+
+name="show_time"
+
+value="{{show[3]}}">
+
+Ticket Price:
+
+<input
+type="number"
+
+name="ticket_price"
+
+value="{{show[4]}}">
+
+Available Seats:
+
+<input
+type="number"
+
+name="available_seats"
+
+value="{{show[5]}}">
+
+<br><br>
+
+<button>
+
+Update
+
+</button>
+
+</form>
+
+<br><br>
+
+<button
+onclick="window.location.href='/shows'">
+
+Back
+
+</button>

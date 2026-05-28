@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Movie Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/dashboard.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎬 MMS</h2>
+
+        <a href="/movies">Movies</a>
+        <a href="/users">Users</a>
+        <a href="/theaters">Theaters</a>
+        <a href="/shows">Shows</a>
+        <a href="/screens">Screens</a>
+        <a href="/seats">Seats</a>
+        <a href="/bookings">Bookings</a>
+        <a href="/payments">Payments</a>
+        <a href="/reviews">Reviews</a>
+
+    </div>
+
+    <div class="main">
+
+        <h1>Movie Management Dashboard</h1>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🎬 Movies</h3>
+                <p>{{ movie_count }}</p>
+            </div>
+
+            <div class="card">
+                <h3>👤 Users</h3>
+                <p>{{ user_count }}</p>
+            </div>
+
+            <div class="card">
+                <h3>🏢 Theaters</h3>
+                <p>{{ theater_count }}</p>
+            </div>
+
+            <div class="card">
+                <h3>🎞 Shows</h3>
+                <p>{{ show_count }}</p>
+            </div>
+
+            <div class="card">
+                <h3>🎟 Bookings</h3>
+                <p>{{ booking_count }}</p>
+            </div>
+
+            <div class="card">
+                <h3>💳 Payments</h3>
+                <p>{{ payment_count }}</p>
+            </div>
+
+            <div class="card">
+                <h3>⭐ Reviews</h3>
+                <p>{{ review_count }}</p>
+            </div>
+
+        </div>
+
+    </div>
+    <script
+
+        src="{{ url_for(
+
+        'static',
+
+        filename='main.js'
+
+        ) }}"
+
+    ></script>
+
+</body>
+
+</html>

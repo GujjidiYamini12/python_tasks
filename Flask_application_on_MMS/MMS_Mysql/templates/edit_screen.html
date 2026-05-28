@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Edit Screen</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/edit_screen.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>🎥 Edit Screen</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>
+                    Theater ID
+                </label>
+
+                <input
+                    type="number"
+
+                    name="theater_id"
+
+                    value="{{ screen[1] }}"
+
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>
+                    Screen Name
+                </label>
+
+                <input
+                    type="text"
+
+                    name="screen_name"
+
+                    value="{{ screen[2] }}"
+
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+
+                type="submit"
+            >
+                Update Screen
+            </button>
+
+            <button
+                class="back-btn"
+
+                type="button"
+
+                onclick="
+                window.location.href=
+                '/screens'
+                "
+            >
+                Back
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

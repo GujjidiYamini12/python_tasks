@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Seat Layout</title>
+
+<link
+rel="stylesheet"
+href="{{ url_for(
+'static',
+filename='css/seats.css'
+) }}"
+>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>🎬 MMS</h2>
+
+<a href="/">Dashboard</a>
+<a href="/movies">Movies</a>
+<a href="/users">Users</a>
+<a href="/theaters">Theaters</a>
+<a href="/shows">Shows</a>
+<a href="/screens">Screens</a>
+<a href="/seats">Seats</a>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+
+<h1>💺 Seat Layout</h1>
+
+<button
+class="add-btn"
+onclick="
+window.location.href=
+'/add_seat'
+"
+>
+
++ Add Seat
+
+</button>
+
+</div>
+
+<div class="seat-card">
+
+<div class="screen">
+
+SCREEN
+
+</div>
+
+<div class="seat-grid">
+
+{% for seat in seats %}
+
+<div
+
+class="seat {% if seat[3] %}booked{% else %}available{% endif %}"
+
+onclick="toggleSeat(
+{{ seat[0] }},
+{{ seat[3]|lower }}
+)"
+
+>
+
+{{ seat[2] }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleSeat(
+seatId,
+isBooked
+){
+
+if(isBooked){
+
+fetch(
+`/cancel/${seatId}`,
+{
+method:"PUT"
+}
+)
+.then(
+()=>location.reload()
+);
+
+}
+
+else{
+
+fetch(
+`/book/${seatId}`,
+{
+method:"PUT"
+}
+)
+.then(
+()=>location.reload()
+);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

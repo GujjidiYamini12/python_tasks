@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <h1>{{ app_name }}</h1>
+    <p>Select your city, choose a theater, pick your movie timing, and book in seconds.</p>
+</section>
+
+<h2>Select City</h2>
+<div class="card-grid">
+    {% for city in city_cards %}
+        <article class="card">
+            <h3>{{ city.name }}</h3>
+            <p class="muted">{{ city.theater_count }} theaters found</p>
+            <a href="{{ url_for('city_theaters', city_name=city.name) }}"><button>Explore Theaters</button></a>
+        </article>
+    {% else %}
+        <p>No city data available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

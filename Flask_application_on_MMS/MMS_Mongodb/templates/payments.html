@@ -1,0 +1,79 @@
+<h2>Payments</h2>
+
+<table border="1">
+
+<tr>
+
+<th>ID</th>
+
+<th>Booking ID</th>
+
+<th>Amount</th>
+
+<th>Method</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+{% for payment in payments %}
+
+<tr>
+
+<td>{{payment[0]}}</td>
+
+<td>{{payment[1]}}</td>
+
+<td>{{payment[2]}}</td>
+
+<td>{{payment[3]}}</td>
+
+<td>{{payment[4]}}</td>
+
+<td>{{payment[5]}}</td>
+
+<td>
+
+<a href="/edit_payment/{{payment[0]}}">
+
+Edit
+
+</a>
+
+|
+
+<a href="/delete_payment/{{payment[0]}}">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<button
+onclick="window.location.href='/add_payment'">
+
+Add Payment
+
+</button>
+
+&nbsp;&nbsp;
+
+<button
+onclick="window.location.href='/'">
+
+Back To Home
+
+</button>

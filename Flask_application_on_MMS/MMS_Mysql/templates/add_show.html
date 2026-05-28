@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Add Show</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/add_show.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>Add Show</h1>
+
+        <form method="POST">
+
+            <div class="input-group">
+
+                <label>Movie ID</label>
+
+                <input
+                    type="number"
+                    name="movie_id"
+                    required
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Screen ID</label>
+
+                <input
+                    type="number"
+                    name="screen_id"
+                    required
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Show Time</label>
+
+                <input
+                    type="text"
+                    name="show_time"
+                    required
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Ticket Price</label>
+
+                <input
+                    type="number"
+                    name="ticket_price"
+                    required
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Available Seats</label>
+
+                <input
+                    type="number"
+                    name="available_seats"
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+                type="submit"
+            >
+                Save
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

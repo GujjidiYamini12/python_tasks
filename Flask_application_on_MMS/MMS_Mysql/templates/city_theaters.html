@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-actions">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="javascript:history.back()">Back</a>
+</div>
+
+<h2>Theaters in {{ city_name }}</h2>
+<form method="GET" class="form-card">
+    <label>Search theater by name</label>
+    <input type="text" name="q" value="{{ search }}" placeholder="Type theater name..." />
+    <button type="submit">Search</button>
+</form>
+
+<div class="card-grid">
+    {% for theater in theaters %}
+        <article class="card">
+            <h3>{{ theater.name }}</h3>
+            <p class="muted">{{ theater.city }}</p>
+            <a href="{{ url_for('theater_movies', theater_id=theater.id) }}"><button>View Movies</button></a>
+        </article>
+    {% else %}
+        <p>No theaters found for this city/search.</p>
+    {% endfor %}
+</div>
+{% endblock %}

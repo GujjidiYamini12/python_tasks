@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Add Theater</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/add_theater.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>🏢 Add Theater</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>Theater Name</label>
+
+                <input
+                    type="text"
+                    name="theater_name"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    name="location"
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+                type="submit"
+            >
+                Save Theater
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

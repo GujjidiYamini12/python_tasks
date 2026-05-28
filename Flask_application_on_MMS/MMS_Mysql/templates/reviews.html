@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Reviews</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/reviews.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎬 MMS</h2>
+
+        <a href="/">Dashboard</a>
+        <a href="/movies">Movies</a>
+        <a href="/users">Users</a>
+        <a href="/theaters">Theaters</a>
+        <a href="/shows">Shows</a>
+        <a href="/screens">Screens</a>
+        <a href="/seats">Seats</a>
+        <a href="/bookings">Bookings</a>
+        <a href="/payments">Payments</a>
+        <a href="/reviews">Reviews</a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>⭐ Reviews</h1>
+
+            <button
+                class="add-btn"
+
+                onclick="
+                window.location.href=
+                '/add_review'
+                "
+            >
+                + Add Review
+            </button>
+
+        </div>
+
+        <table class="review-table">
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>User ID</th>
+
+                <th>Movie ID</th>
+
+                <th>Rating</th>
+
+                <th>Review</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            {% for review in reviews %}
+
+            <tr>
+
+                <td>{{ review[0] }}</td>
+
+                <td>{{ review[1] }}</td>
+
+                <td>{{ review[2] }}</td>
+
+                <td>⭐ {{ review[3] }}</td>
+
+                <td>{{ review[4] }}</td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+
+                        href="/edit_review/{{ review[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+
+                        href="/delete_review/{{ review[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

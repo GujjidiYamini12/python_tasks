@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Reports</h2>
+
+<div class="card-grid">
+    <div class="card"><strong>Total Movies:</strong> {{ total_movies }}</div>
+    <div class="card"><strong>Total Shows:</strong> {{ total_shows }}</div>
+    <div class="card"><strong>Active Bookings:</strong> {{ total_active_bookings }}</div>
+    <div class="card"><strong>Cancelled Bookings:</strong> {{ total_cancelled }}</div>
+    <div class="card"><strong>Total Revenue:</strong> INR {{ "%.2f"|format(total_revenue) }}</div>
+</div>
+
+<div class="split">
+    <div class="form-card">
+        <h3>Revenue by Movie</h3>
+        <canvas id="revenueChart"></canvas>
+    </div>
+    <div class="form-card">
+        <h3>Booking Status</h3>
+        <canvas id="statusChart"></canvas>
+    </div>
+</div>
+
+<div class="form-card">
+    <h3>Show Occupancy (%)</h3>
+    <canvas id="occupancyChart"></canvas>
+</div>
+
+<p><a href="{{ url_for('admin_dashboard') }}">Back to Admin Dashboard</a></p>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const revenueLabels = {{ revenue_labels | tojson }};
+    const revenueValues = {{ revenue_values | tojson }};
+    const statusLabels = {{ status_labels | tojson }};
+    const statusValues = {{ status_values | tojson }};
+    const occupancyLabels = {{ occupancy_labels | tojson }};
+    const occupancyValues = {{ occupancy_values | tojson }};
+
+    new Chart(document.getElementById("revenueChart"), {
+        type: "bar",
+        data: {
+            labels: revenueLabels,
+            datasets: [{ label: "Revenue (INR)", data: revenueValues, backgroundColor: "#3b82f6" }]
+        }
+    });
+
+    new Chart(document.getElementById("statusChart"), {
+        type: "pie",
+        data: {
+            labels: statusLabels,
+            datasets: [{ data: statusValues, backgroundColor: ["#22c55e", "#ef4444", "#f59e0b"] }]
+        }
+    });
+
+    new Chart(document.getElementById("occupancyChart"), {
+        type: "line",
+        data: {
+            labels: occupancyLabels,
+            datasets: [{ label: "Occupancy %", data: occupancyValues, borderColor: "#8b5cf6", fill: false }]
+        },
+        options: { scales: { y: { min: 0, max: 100 } } }
+    });
+</script>
+{% endblock %}

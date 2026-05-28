@@ -1,0 +1,14 @@
+@import url("add_payment.css");
+
+textarea{
+
+padding:16px;
+
+border:none;
+
+border-radius:14px;
+
+background:#0f172a;
+
+color:white;
+}

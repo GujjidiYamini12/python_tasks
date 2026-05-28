@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Movies</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/movies.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h1>TEST MOVIES PAGE</h1>
+        <h2>🎬 MMS</h2>
+
+        <a href="/">Dashboard</a>
+        <a href="/movies">Movies</a>
+        <a href="/users">Users</a>
+        <a href="/theaters">Theaters</a>
+        <a href="/shows">Shows</a>
+        <a href="/screens">Screens</a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>🎬 Movies</h1>
+
+            <div class="top-actions">
+
+                <input
+                    id="movieSearch"
+
+                    type="text"
+
+                    placeholder=
+                    "Search Movie..."
+                >
+
+                <button
+                    class="add-btn"
+
+                    onclick="
+                    window.location.href=
+                    '/add_movie'
+                    "
+                >
+                    + Add Movie
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="search-box">
+
+            <form method="GET">
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="🔍 Search movie..."
+                >
+
+                <button
+                    class="search-btn"
+                    type="submit"
+                >
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+        <table class="movie-table">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Movie</th>
+                <th>Genre</th>
+                <th>Rating</th>
+                <th>Duration</th>
+                <th>Actions</th>
+
+            </tr>
+
+            {% for movie in movies %}
+
+            <tr>
+
+                <td>{{ movie[0] }}</td>
+                <td>{{ movie[1] }}</td>
+                <td>{{ movie[2] }}</td>
+                <td>⭐ {{ movie[3] }}</td>
+                <td>{{ movie[4] }}</td>
+                <td>
+                    <img src="{{ movie[5] }}" class="poster" ></td>
+                <td>
+
+                    <a
+                        class="edit-btn"
+                        href="/edit_movie/{{ movie[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+                        href="/delete_movie/{{ movie[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+    <script
+        src="{{ url_for(
+        'static',
+        filename='js/movies.js'
+        ) }}"
+        ></script>
+
+</body>
+
+</html>

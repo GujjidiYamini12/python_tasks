@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Theaters</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/theaters.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎬 MMS</h2>
+
+        <a href="/">Dashboard</a>
+
+        <a href="/movies">
+            Movies
+        </a>
+
+        <a href="/users">
+            Users
+        </a>
+
+        <a href="/theaters">
+            Theaters
+        </a>
+
+        <a href="/shows">
+            Shows
+        </a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>
+                🏢 Theaters
+            </h1>
+
+            <button
+                class="add-btn"
+                onclick="
+                window.location.href=
+                '/add_theater'
+                "
+            >
+                + Add Theater
+            </button>
+
+        </div>
+
+        <table class="theater-table">
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>
+                    Theater Name
+                </th>
+
+                <th>
+                    Location
+                </th>
+
+                <th>
+                    Actions
+                </th>
+
+            </tr>
+
+            {% for theater in theaters %}
+
+            <tr>
+
+                <td>
+                    {{ theater[0] }}
+                </td>
+
+                <td>
+                    {{ theater[1] }}
+                </td>
+
+                <td>
+                    {{ theater[2] }}
+                </td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+                        href="/edit_theater/{{ theater[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+                        href="/delete_theater/{{ theater[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

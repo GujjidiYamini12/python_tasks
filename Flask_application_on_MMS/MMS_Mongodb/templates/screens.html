@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Screens</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/screens.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>Screens</h1>
+
+            <button
+                class="add-btn"
+                onclick="window.location.href='/add_screen'"
+            >
+                + Add Screen
+            </button>
+
+        </div>
+
+        <table class="screen-table">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Theater ID</th>
+                <th>Screen Name</th>
+                <th>Actions</th>
+
+            </tr>
+
+            {% for screen in screens %}
+
+            <tr>
+
+                <td>{{ screen[0] }}</td>
+                <td>{{ screen[1] }}</td>
+                <td>{{ screen[2] }}</td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+                        href="/edit_screen/{{ screen[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+                        href="/delete_screen/{{ screen[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

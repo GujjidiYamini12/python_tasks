@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Add Seat</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/add_seat.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>💺 Add Seat</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>Screen ID</label>
+
+                <input
+                    type="number"
+                    name="screen_id"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Seat Number</label>
+
+                <input
+                    type="text"
+                    name="seat_number"
+                    required
+                >
+
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="save-btn"
+                    type="submit"
+                >
+                    Save Seat
+                </button>
+
+                <button
+                    class="back-btn"
+                    type="button"
+                    onclick="
+                    window.location.href=
+                    '/seats'
+                    "
+                >
+                    Back
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

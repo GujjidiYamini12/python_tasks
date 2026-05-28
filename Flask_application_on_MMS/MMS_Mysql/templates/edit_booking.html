@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Edit Booking</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/edit_booking.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>🎟 Edit Booking</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>User ID</label>
+
+                <input
+                    type="number"
+                    name="user_id"
+                    value="{{ booking[1] }}"
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+                type="submit"
+            >
+                Update
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+@import url("dashboard.css");
+
+.main{
+    margin-left:280px;
+    padding:50px;
+}
+
+.header{
+    display:flex;
+
+    justify-content:
+    space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:55px;
+}
+
+.add-btn{
+
+    background:#f59e0b;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 28px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.add-btn:hover{
+    background:#d97706;
+}
+
+.theater-table{
+
+    width:100%;
+
+    border-collapse:
+    separate;
+
+    border-spacing:0;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    background:#1e293b;
+}
+
+.theater-table th{
+
+    background:#f59e0b;
+
+    padding:25px;
+
+    font-size:18px;
+}
+
+.theater-table td{
+
+    padding:25px;
+
+    text-align:center;
+
+    background:#1e293b;
+
+    font-size:18px;
+}
+
+.edit-btn{
+
+    background:#10b981;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:15px;
+
+    margin-right:10px;
+}
+
+.delete-btn{
+
+    background:#ef4444;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:15px;
+}

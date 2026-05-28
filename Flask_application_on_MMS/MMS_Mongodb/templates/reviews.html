@@ -1,0 +1,75 @@
+<h2>Reviews</h2>
+
+<table border="1">
+
+<tr>
+
+<th>ID</th>
+
+<th>User ID</th>
+
+<th>Movie ID</th>
+
+<th>Rating</th>
+
+<th>Review</th>
+
+<th>Actions</th>
+
+</tr>
+
+{% for review in reviews %}
+
+<tr>
+
+<td>{{review[0]}}</td>
+
+<td>{{review[1]}}</td>
+
+<td>{{review[2]}}</td>
+
+<td>{{review[3]}}</td>
+
+<td>{{review[4]}}</td>
+
+<td>
+
+<a href="/edit_review/{{review[0]}}">
+
+Edit
+
+</a>
+
+|
+
+<a href="/delete_review/{{review[0]}}">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<button
+onclick="window.location.href='/add_review'">
+
+Add Review
+
+</button>
+
+&nbsp;&nbsp;
+
+<button
+onclick="window.location.href='/'">
+
+Back To Home
+
+</button>

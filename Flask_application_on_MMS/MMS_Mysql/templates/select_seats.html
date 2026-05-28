@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-actions">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="javascript:history.back()">Back</a>
+</div>
+
+<h2>Select Seats</h2>
+
+<div class="form-card">
+    <h3>{{ show.movie.title }}</h3>
+    <p><strong>Theater:</strong> {{ show.theater.name }} ({{ show.theater.city }})</p>
+    <p><strong>Screen:</strong> Screen {{ show.screen_no }} | {{ show.show_slot }} | {{ "AC" if show.is_ac else "Non-AC" }}</p>
+    <p><strong>Duration:</strong> {{ show.movie.duration_mins|duration_hm }}</p>
+    <p><strong>Show Time:</strong> {{ show.show_time.strftime("%d %b %Y, %I:%M %p") }}</p>
+    <p><strong>Price per seat:</strong> INR {{ "%.2f"|format(show.price) }}</p>
+    <p><strong>Available:</strong> {{ show.available_seats }}</p>
+</div>
+
+<form method="POST" action="{{ url_for('hold_seats', show_id=show.id) }}" class="form-card">
+    <h3>Seat Map</h3>
+    <p class="muted">Choose one or more available seats. Seats are locked for 3 minutes before payment.</p>
+
+    <div class="seat-grid">
+        {% for seat in available_seats %}
+            <label class="seat-label">
+                <input type="checkbox" name="selected_seats" value="{{ seat }}" />
+                <span>{{ seat }}</span>
+            </label>
+        {% endfor %}
+    </div>
+    <button type="submit">Continue to Payment</button>
+</form>
+{% endblock %}

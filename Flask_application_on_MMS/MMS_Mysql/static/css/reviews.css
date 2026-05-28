@@ -1,0 +1,26 @@
+@import url("dashboard.css");
+
+.main{
+    margin-left:280px;
+    padding:50px;
+}
+
+.review-table{
+    width:100%;
+    border-spacing:0 15px;
+}
+
+.review-table th{
+    background:#facc15;
+    padding:20px;
+}
+
+.review-table td{
+    background:#1e293b;
+    padding:25px;
+}
+
+.add-btn{
+    background:#facc15;
+    color:black;
+}

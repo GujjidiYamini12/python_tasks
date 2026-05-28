@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Edit Seat</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/edit_seat.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>💺 Edit Seat</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>
+                    Screen ID
+                </label>
+
+                <input
+                    type="number"
+
+                    name="screen_id"
+
+                    value="{{ seat[1] }}"
+
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>
+                    Seat Number
+                </label>
+
+                <input
+                    type="text"
+
+                    name="seat_number"
+
+                    value="{{ seat[2] }}"
+
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+
+                type="submit"
+            >
+                Update Seat
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

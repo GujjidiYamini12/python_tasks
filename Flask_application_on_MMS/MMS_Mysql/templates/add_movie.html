@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Add Movie</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/add_movie.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="form-card">
+
+        <h1>🎬 Add Movie</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>Movie Name</label>
+
+                <input
+                    type="text"
+                    name="movie_name"
+                    placeholder="Enter movie name"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Genre</label>
+
+                <input
+                    type="text"
+                    name="genre"
+                    placeholder="Action / Comedy"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Rating</label>
+
+                <input
+                    type="text"
+                    name="rating"
+                    placeholder="IMDb Rating"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Duration</label>
+
+                <input
+                    type="text"
+                    name="duration"
+                    placeholder="2h 30m"
+                    required
+                >
+
+            </div>
+            <div class="input-box">
+                <label>Poster URL</label>
+                <input type="text" name="poster">
+            </div>
+
+            <button
+                class="save-btn"
+                type="submit"
+            >
+                Save Movie
+            </button>
+
+            <button
+                class="back-btn"
+                type="button"
+                onclick="window.location.href='/movies'"
+            >
+                Back
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

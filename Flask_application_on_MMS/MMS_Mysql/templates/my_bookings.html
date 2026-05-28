@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-actions">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="javascript:history.back()">Back</a>
+</div>
+
+<h2>My Bookings</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Theater</th>
+            <th>Screen / Type</th>
+            <th>Show Time</th>
+            <th>Seat Numbers</th>
+            <th>Seats</th>
+            <th>Total</th>
+            <th>Method</th>
+            <th>Payment Ref</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.show.movie.title }}</td>
+                <td>{{ booking.show.theater.name }} ({{ booking.show.theater.city }})</td>
+                <td>Screen {{ booking.show.screen_no }} / {{ booking.show.show_slot }}</td>
+                <td>{{ booking.show.show_time.strftime("%d %b %Y, %I:%M %p") }}</td>
+                <td>{{ booking.seat_numbers }}</td>
+                <td>{{ booking.seats_booked }}</td>
+                <td>INR {{ "%.2f"|format(booking.total_amount) }}</td>
+                <td>{{ booking.payment_method }}</td>
+                <td>{{ booking.payment_ref }}</td>
+                <td>{{ booking.status }}</td>
+                <td>
+                    {% if booking.status == "Booked" %}
+                        <a href="{{ url_for('ticket_pdf', booking_id=booking.id) }}"><button type="button">PDF</button></a>
+                        <a href="{{ url_for('ticket_qr', booking_id=booking.id) }}" target="_blank"><button type="button">QR</button></a>
+                        <form action="{{ url_for('cancel_booking', booking_id=booking.id) }}" method="POST">
+                            <button type="submit">Cancel</button>
+                        </form>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr><td colspan="11">No bookings found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

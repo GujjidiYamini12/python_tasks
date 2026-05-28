@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Payments</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/payments.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎬 MMS</h2>
+
+        <a href="/">Dashboard</a>
+        <a href="/movies">Movies</a>
+        <a href="/users">Users</a>
+        <a href="/theaters">Theaters</a>
+        <a href="/shows">Shows</a>
+        <a href="/screens">Screens</a>
+        <a href="/seats">Seats</a>
+        <a href="/bookings">Bookings</a>
+        <a href="/payments">Payments</a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>💳 Payments</h1>
+
+            <button
+                class="add-btn"
+
+                onclick="
+                window.location.href=
+                '/add_payment'
+                "
+            >
+                + Add Payment
+            </button>
+
+        </div>
+
+        <table class="payment-table">
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Booking ID</th>
+
+                <th>Amount</th>
+
+                <th>Method</th>
+
+                <th>Status</th>
+
+                <th>Date</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            {% for payment in payments %}
+
+            <tr>
+
+                <td>{{ payment[0] }}</td>
+
+                <td>{{ payment[1] }}</td>
+
+                <td>₹ {{ payment[2] }}</td>
+
+                <td>{{ payment[3] }}</td>
+
+                <td>{{ payment[4] }}</td>
+
+                <td>{{ payment[5] }}</td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+
+                        href="/edit_payment/{{ payment[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+
+                        href="/delete_payment/{{ payment[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

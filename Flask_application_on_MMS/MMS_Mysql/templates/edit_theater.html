@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Edit Theater</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/edit_theater.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>🏢 Edit Theater</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>Theater Name</label>
+
+                <input
+                    type="text"
+                    name="theater_name"
+                    value="{{ theater[1] }}"
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    name="location"
+                    value="{{ theater[2] }}"
+                    required
+                >
+
+            </div>
+
+            <button
+                class="save-btn"
+                type="submit"
+            >
+                Update Theater
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

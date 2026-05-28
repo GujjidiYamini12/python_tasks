@@ -1,0 +1,24 @@
+@import url("movies.css");
+
+.user-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#1e293b;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.user-table th{
+    background:#f59e0b;
+    padding:15px;
+}
+
+.user-table td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #334155;
+}
+
+.user-table tr:hover{
+    background:#334155;
+}

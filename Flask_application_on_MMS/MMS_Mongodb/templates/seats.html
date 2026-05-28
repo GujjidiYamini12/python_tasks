@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Seats</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/seats.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>Seats</h1>
+
+            <button
+                class="add-btn"
+                onclick="window.location.href='/add_seat'"
+            >
+                + Add Seat
+            </button>
+
+        </div>
+
+        <table class="seat-table">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Screen ID</th>
+                <th>Seat Number</th>
+                <th>Actions</th>
+
+            </tr>
+
+            {% for seat in seats %}
+
+            <tr>
+
+                <td>{{ seat[0] }}</td>
+                <td>{{ seat[1] }}</td>
+                <td>{{ seat[2] }}</td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+                        href="/edit_seat/{{ seat[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+                        href="/delete_seat/{{ seat[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

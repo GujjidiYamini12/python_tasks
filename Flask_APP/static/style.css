@@ -1,4 +1,30 @@
-title{
-    color:blue;
-    text-align: center
+body{
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+h1{
+    color: blue;
+    margin-bottom: 20px;
+}
+input{
+    padding: 10px;
+    width: 250px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+button{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+ul{
+    padding: 0;
+    margin-top: 20px;
+}
+li{
+    background: #e3e3e3;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }

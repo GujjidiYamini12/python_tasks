@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-actions">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="javascript:history.back()">Back</a>
+</div>
+
+<h2>Payment</h2>
+
+<div class="form-card">
+    <h3>{{ show.movie.title }}</h3>
+    <p><strong>Theater:</strong> {{ show.theater.name }} ({{ show.theater.city }})</p>
+    <p><strong>Screen:</strong> Screen {{ show.screen_no }} | {{ show.show_slot }} | {{ "AC" if show.is_ac else "Non-AC" }}</p>
+    <p><strong>Show Time:</strong> {{ show.show_time.strftime("%d %b %Y, %I:%M %p") }}</p>
+    <p><strong>Selected Seats:</strong> {{ seat_numbers | join(", ") }}</p>
+    <p><strong>Total Amount:</strong> INR {{ "%.2f"|format(total_amount) }}</p>
+    <p class="muted">Seat hold expires in <strong id="hold-timer">{{ remaining_seconds }}</strong> seconds.</p>
+</div>
+
+<form method="POST" action="{{ url_for('confirm_payment', hold_token=hold.hold_token) }}" class="form-card">
+    <h3>Payment Details</h3>
+    <label>Payment Method</label>
+    <select name="payment_method" id="payment-method" required>
+        <option value="Card">Card</option>
+        <option value="UPI">UPI</option>
+        <option value="NetBanking">Net Banking</option>
+        <option value="Wallet">Wallet</option>
+    </select>
+
+    <div id="card-fields">
+        <label>Name on Card</label>
+        <input type="text" name="card_name" />
+        <label>Card Number</label>
+        <input type="text" name="card_number" placeholder="4111111111111111" />
+        <div class="split">
+            <div>
+                <label>Expiry</label>
+                <input type="text" name="expiry" placeholder="MM/YY" />
+            </div>
+            <div>
+                <label>CVV</label>
+                <input type="password" name="cvv" placeholder="123" />
+            </div>
+        </div>
+    </div>
+
+    <div id="upi-fields" style="display:none;">
+        <label>UPI ID</label>
+        <input type="text" name="upi_id" placeholder="name@upi" />
+    </div>
+
+    <div id="netbanking-fields" style="display:none;">
+        <label>Select Bank</label>
+        <select name="bank_name">
+            <option value="">Select</option>
+            <option value="SBI">SBI</option>
+            <option value="HDFC">HDFC</option>
+            <option value="ICICI">ICICI</option>
+            <option value="Axis">Axis</option>
+        </select>
+    </div>
+
+    <div id="wallet-fields" style="display:none;">
+        <label>Wallet Provider</label>
+        <select name="wallet_provider">
+            <option value="">Select</option>
+            <option value="Paytm">Paytm</option>
+            <option value="PhonePe">PhonePe</option>
+            <option value="AmazonPay">Amazon Pay</option>
+        </select>
+    </div>
+    <button type="submit">Pay and Confirm Booking</button>
+</form>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    let remaining = Number("{{ remaining_seconds }}");
+    const timerEl = document.getElementById("hold-timer");
+    const methodSelect = document.getElementById("payment-method");
+    const sections = {
+        Card: document.getElementById("card-fields"),
+        UPI: document.getElementById("upi-fields"),
+        NetBanking: document.getElementById("netbanking-fields"),
+        Wallet: document.getElementById("wallet-fields")
+    };
+    const togglePaymentFields = () => {
+        Object.keys(sections).forEach((key) => {
+            sections[key].style.display = key === methodSelect.value ? "block" : "none";
+        });
+    };
+    methodSelect.addEventListener("change", togglePaymentFields);
+    togglePaymentFields();
+
+    const interval = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+            clearInterval(interval);
+            timerEl.textContent = "0";
+            window.location.href = "{{ url_for('select_seats', show_id=show.id) }}";
+            return;
+        }
+        timerEl.textContent = remaining;
+    }, 1000);
+</script>
+{% endblock %}

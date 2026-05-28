@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Shows</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/shows.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎬 MMS</h2>
+
+        <a href="/">Dashboard</a>
+        <a href="/movies">Movies</a>
+        <a href="/users">Users</a>
+        <a href="/theaters">Theaters</a>
+        <a href="/shows">Shows</a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>Shows</h1>
+
+            <button
+                class="add-btn"
+                onclick="window.location.href='/add_show'"
+            >
+                + Add Show
+            </button>
+
+        </div>
+
+        <table class="show-table">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Movie ID</th>
+                <th>Screen ID</th>
+                <th>Show Time</th>
+                <th>Price</th>
+                <th>Seats</th>
+                <th>Actions</th>
+
+            </tr>
+
+            {% for show in shows %}
+
+            <tr>
+
+                <td>{{ show[0] }}</td>
+                <td>{{ show[1] }}</td>
+                <td>{{ show[2] }}</td>
+                <td>{{ show[3] }}</td>
+                <td>{{ show[4] }}</td>
+                <td>{{ show[5] }}</td>
+
+                <td>
+
+                    <a
+                        class="edit-btn"
+                        href="/edit_show/{{ show[0] }}"
+                    >
+                        Edit
+                    </a>
+
+                    <a
+                        class="delete-btn"
+                        href="/delete_show/{{ show[0] }}"
+                    >
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

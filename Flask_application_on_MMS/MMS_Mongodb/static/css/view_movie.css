@@ -1,0 +1,96 @@
+@import url("dashboard.css");
+
+.main{
+    margin-left:280px;
+    padding:50px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:40px;
+}
+
+.header h1{
+    font-size:55px;
+}
+
+.add-btn{
+
+    background:#f59e0b;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 28px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+}
+
+.movie-table{
+
+    width:100%;
+
+    border-collapse:separate;
+
+    border-spacing:0;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:#1e293b;
+}
+
+.movie-table th{
+
+    background:#f59e0b;
+
+    padding:25px;
+
+    font-size:18px;
+}
+
+.movie-table td{
+
+    padding:25px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    background:#1e293b;
+}
+
+.edit-btn{
+
+    background:#10b981;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:15px;
+
+    margin-right:10px;
+}
+
+.delete-btn{
+
+    background:#ef4444;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:15px;
+}

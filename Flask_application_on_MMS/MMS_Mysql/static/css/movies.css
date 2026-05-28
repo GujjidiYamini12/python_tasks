@@ -1,0 +1,187 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    display:flex;
+    background:#07122c;
+    color:white;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#08101f;
+    padding:30px;
+}
+
+.sidebar h2{
+    color:#f7a400;
+    margin-bottom:40px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    margin:20px 0;
+    font-size:18px;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* Top */
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.top h1{
+    font-size:55px;
+}
+
+.top button{
+    background:#f7a400;
+    color:white;
+    border:none;
+    padding:15px 25px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+/* Carousel */
+
+.movie-carousel{
+
+    display:flex;
+
+    gap:20px;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+    padding-bottom:20px;
+}
+
+.movie-carousel::-webkit-scrollbar{
+
+    height:8px;
+}
+
+.movie-carousel::-webkit-scrollbar-thumb{
+
+    background:#f7a400;
+
+    border-radius:10px;
+}
+
+/* Small Cards */
+
+.movie-card{
+
+    min-width:220px;
+
+    max-width:220px;
+
+    background:#1c2940;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    transition:.3s;
+}
+
+.movie-card:hover{
+
+    transform:
+    translateY(-8px);
+}
+
+/* Poster */
+
+.movie-card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+}
+
+/* Content */
+
+.content{
+
+    padding:12px;
+}
+
+.content h3{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.content p{
+
+    margin:5px 0;
+
+    color:#d9d9d9;
+
+    font-size:14px;
+}
+
+/* Buttons */
+
+.actions{
+
+    margin-top:10px;
+
+    display:flex;
+
+    gap:8px;
+}
+
+.actions a{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:8px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:8px;
+
+    font-size:14px;
+}
+
+.actions a:first-child{
+
+    background:#16c47f;
+}
+
+.actions a:last-child{
+
+    background:#ff3b3b;
+}

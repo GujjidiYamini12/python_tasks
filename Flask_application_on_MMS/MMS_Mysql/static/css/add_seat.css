@@ -1,0 +1,20 @@
+@import url("add_movie.css");
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.back-btn{
+    flex:1;
+    background:#334155;
+    color:white;
+    border:none;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.save-btn{
+    flex:1;
+}

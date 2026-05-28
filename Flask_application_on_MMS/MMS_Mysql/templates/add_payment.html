@@ -1,0 +1,221 @@
+<link
+rel="stylesheet"
+
+href="{{ url_for(
+'static',
+filename='css/add_payment.css'
+) }}"
+>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Add Payment</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/add_payment.css'
+        ) }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>💳 Add Payment</h1>
+
+        <form method="POST">
+
+            <div class="input-box">
+
+                <label>Booking ID</label>
+
+                <input
+                    type="number"
+
+                    name="booking_id"
+
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>No Of Seats</label>
+
+                <input
+                    id="seat_count"
+
+                    type="number"
+
+                    min="1"
+
+                    value="1"
+
+                    required
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Amount</label>
+
+                <input
+                    id="amount"
+
+                    type="number"
+
+                    name="amount"
+
+                    readonly
+                >
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Payment Method</label>
+
+                <select
+                    name="payment_method"
+
+                    required
+                >
+
+                    <option>
+                        UPI
+                    </option>
+
+                    <option>
+                        Credit Card
+                    </option>
+
+                    <option>
+                        Debit Card
+                    </option>
+
+                    <option>
+                        Cash
+                    </option>
+
+                    <option>
+                        Net Banking
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Payment Status</label>
+
+                <select
+                    name="payment_status"
+
+                    required
+                >
+
+                    <option>
+                        Success
+                    </option>
+
+                    <option>
+                        Pending
+                    </option>
+
+                    <option>
+                        Failed
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Payment Date</label>
+
+                <input
+                    type="date"
+
+                    name="payment_date"
+
+                    required
+                >
+
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="save-btn"
+
+                    type="submit"
+                >
+                    Save Payment
+                </button>
+
+                <button
+                    class="back-btn"
+
+                    type="button"
+
+                    onclick="
+                    window.location.href=
+                    '/payments'
+                    "
+                >
+                    Back
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+<script>
+
+const seatPrice=200;
+
+const seatInput=
+document.getElementById(
+"seat_count"
+);
+
+const amountInput=
+document.getElementById(
+"amount"
+);
+
+function calculate(){
+
+    amountInput.value=
+    seatInput.value
+    *
+    seatPrice;
+
+}
+
+calculate();
+
+seatInput.addEventListener(
+"input",
+calculate
+);
+
+</script>
+
+</body>
+
+</html>
